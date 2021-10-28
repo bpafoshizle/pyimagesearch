@@ -16,7 +16,7 @@ class SimpleDataSetLoader:
     def load(self, imagePaths, verbose=-1):
         # initialize the list of features and labels
         data = []
-        lables = []
+        labels = []
 
         # loop over the input images
         for(i, imagePath) in enumerate(imagePaths):
