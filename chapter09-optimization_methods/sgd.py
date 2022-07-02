@@ -112,15 +112,18 @@ print(classification_report(testY, preds))
 
 # plot the (testing) classification data
 plt.style.use("ggplot")
-plt.figure()
+data_fig = plt.figure()
 plt.title("Data")
 plt.scatter(testX[:,0], testX[:,1], marker="o", c=testY[:, 0], s=30)
 
 # construct a figure that plots the loss over time
 plt.style.use("ggplot")
-plt.figure()
+loss_fig = plt.figure()
 plt.plot(np.arange(0, args["epochs"]), losses)
 plt.title("Training Loss")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss")
 plt.show()
+
+data_fig.savefig('sgd_data.png', bbox_inches='tight')
+loss_fig.savefig('sgd_loss.png', bbox_inches='tight')
