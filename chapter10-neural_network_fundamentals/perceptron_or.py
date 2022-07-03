@@ -20,4 +20,4 @@ for (x, target) in zip(X, y):
     # to our console
     pred = p.predict(x)
     print("[INFO] data={}, ground-truth={}, pred={}".format(
-        x, target, pred))
+        x, target[0], pred))
