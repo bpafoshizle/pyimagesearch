@@ -3,8 +3,8 @@ from pyimagesearch.nn import NeuralNetwork
 import numpy as np
 
 # construct the XOR dataset
-X = [[0, 0], [0, 1], [1, 0], [1,1]]
-y = [[0], [1], [1], [0]]
+X = np.array([[0, 0], [0, 1], [1, 0], [1,1]])
+y = np.array([[0], [1], [1], [0]])
 
 # define our 2-2-1 neural network and train it
 nn = NeuralNetwork([2,2,1], alpha=0.5)
