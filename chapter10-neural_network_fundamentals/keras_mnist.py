@@ -10,6 +10,9 @@ import matplotlib.pyplot as plt
 import numpy as np
 import argparse
 
+# Epochs constant
+EPOCHS=100
+
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
 ap.add_argument("-o", "--output", required=True,
@@ -46,9 +49,9 @@ model.add(Dense(10, activation="softmax"))
 print("[INFO] training network...")
 sgd = SGD(0.01)
 model.compile(loss="categorical_crossentropy", optimizer=sgd,
-    metrics=["accuracy"])
+    metrics=["acc"])
 H = model.fit(trainX, trainY, validation_data=(testX, testY), 
-    epochs=100, batch_size=128)
+    epochs=EPOCHS, batch_size=128)
 
 # evaluate the network
 print("[INFO] evaluating network...")
@@ -59,10 +62,10 @@ print(classification_report(testY.argmax(axis=1),
 
 plt.style.use("ggplot")
 plt.figure()
-plt.plot(np.arange(0, 100), H.history["loss"], label="train_loss")
-plt.plot(np.arange(0, 100), H.history["val_loss"], label="val_loss")
-plt.plot(np.arange(0, 100), H.history["accuracy"], label="train_acc")
-plt.plot(np.arange(0, 100), H.history["val_accuracy"], label="val_acc")
+plt.plot(np.arange(0, EPOCHS), H.history["loss"], label="train_loss")
+plt.plot(np.arange(0, EPOCHS), H.history["val_loss"], label="val_loss")
+plt.plot(np.arange(0, EPOCHS), H.history["acc"], label="train_acc")
+plt.plot(np.arange(0, EPOCHS), H.history["val_acc"], label="val_acc")
 plt.title("Training Loss and Accuracy")
 plt.xlabel("Epoch #")
 plt.ylabel("Loss/Accuracy")
