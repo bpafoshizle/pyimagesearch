@@ -13,7 +13,7 @@ EPOCHS=100
 
 # construct the argument parse and parse the arguments
 ap = argparse.ArgumentParser()
-ap.add_argument("-o", "--output", required=True
+ap.add_argument("-o", "--output", required=True,
     help="path to the output loss/accuracy plot")
 args = vars(ap.parse_args())
 
@@ -43,7 +43,7 @@ model.add(Dense(10, activation="softmax"))
 
 # train the model using SGD
 print("[INFO] training network...")
-sgd = SDG(0.01)
+sgd = SGD(0.01)
 model.compile(loss="categorical_crossentropy", optimizer=sgd, 
     metrics=["acc"])
 H = model.fit(trainX, trainY, validation_data=(testX, testY), 
