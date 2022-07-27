@@ -36,12 +36,12 @@ data = data.astype("float")/255.0
 
 # partition the data into trainig and testing splits using 75% of
 # the data for training and the remaining 25% for testing
-(trainX, trainY, testX, testY) = train_test_split(data, labels, 
+(trainX, testX, trainY, testY) = train_test_split(data, labels, 
     test_size=0.25, random_state = 42)
 
 # converts the labels from integers to vectors
-trainY = LabelBinarizer.fit_transform(trainY)
-testY = LabelBinarizer.fit_transform(testY)
+trainY = LabelBinarizer().fit_transform(trainY)
+testY = LabelBinarizer().fit_transform(testY)
 
 # instantiate the optimizer and model
 print("[INFO] compiling model...")
@@ -64,7 +64,7 @@ print(classification_report(testY.argmax(axis=1),
 
 # plot the training loss and accuracy
 plt.style.use("ggplot")
-plt.figure()
+fig = plt.figure()
 plt.plot(np.arange(0, EPOCHS), H.history["loss"], label="train_loss")
 plt.plot(np.arange(0, EPOCHS), H.history["val_loss"], label="val_loss")
 plt.plot(np.arange(0, EPOCHS), H.history["acc"], label="training_acc")
@@ -75,4 +75,4 @@ plt.ylabel("Loss/Accuracy")
 plt.legend()
 plt.show()
 
-plt.savefig('shallownet_animals_loss.png', bbox_inches='tight')
+fig.savefig('./output/shallownet_animals_loss.png', bbox_inches='tight')

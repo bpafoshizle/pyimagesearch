@@ -11,7 +11,7 @@ class ShallowNet:
     def build(width, height, depth, classes):
         # initialize the model along with the input shape to be
         # "channels last"
-        model = Sequential
+        model = Sequential()
         inputShape = (height, width, depth)
 
         # if we are using "channels first", update the input shape

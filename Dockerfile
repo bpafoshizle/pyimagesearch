@@ -11,3 +11,4 @@ RUN python -m ipykernel install --user --name python-tf-gpu --display-name "Pyth
 RUN conda install scikit-learn -y
 RUN conda install scikit-image -y
 RUN conda install opencv -y
+RUN conda install -c conda-forge imutils
